@@ -1,0 +1,40 @@
+<style>
+    .vertical-menu {
+        width: 200px;
+    }
+
+    .vertical-menu a {
+        background-color: #eee;
+        color: black;
+        display: block;
+        padding: 12px;
+        text-decoration: none;
+    }
+
+    .vertical-menu a:hover {
+        background-color: #ccc;
+    }
+
+    .vertical-menu a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+<div  class="row">
+
+    <div class="col-sm-3">
+        <div class="vertical-menu">
+            <a ui-sref="#" class="active">Thể loại:</a>
+            <a ui-sref=".danhsach">DANH SÁCH THỂ LOẠI</a>
+            <a ui-sref="#">THÊM THỂ LOẠI</a>
+          
+        </div>
+    </div>
+    <div class="col-sm-6">
+           
+            
+            <div ui-view></div>
+           
+    </div>
+    
+</div>
