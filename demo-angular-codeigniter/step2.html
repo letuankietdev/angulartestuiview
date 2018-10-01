@@ -3,25 +3,30 @@
 <button ng-click="changestepNumber(0)">Set Number</button> -->
 <div>
 
-    <div id="page-wrapper">
-        <span>Danh sách thể loại:</span>
+    <div id="page-wrapper" >
+        <span>Danh sách user:</span>
         <hr>
-        <div class="row">
+        <div class="row" >
             <div class="col-md-2">ID</div>
             <div class="col-md-2">NAME</div>
-            <div class="col-md-2">Create_at</div>
-            <div class="col-md-2">Update_at</div>
-            <div class="col-md-2"></div>
-            <div class="col-md-2"></div>
+            <div class="col-md-2">email</div>
+           
+           
+            <div class="col-md-2">create_at</div>
+            <div class="col-md-2">update_at</div>
         </div>
         <hr>
-        <div class="row">
-            <div class="col-md-2">1</div>
-            <div class="col-md-2">Khoa học</div>
-            <div class="col-md-2">2017/08/29</div>
-            <div class="col-md-2"></div>
-            <div class="col-md-2"><a ui-sref="#">DELETE</a></div>
-            <div class="col-md-2"><a ui-sref="#">EDIT</a></div>
+        <div class="row" ng-repeat="mang in mangs">
+            <div class="col-md-2">{{mang.id}}</div>
+            <div class="col-md-2">{{mang.name}}</div>
+            <div class="col-md-2">{{mang.email}}</div>
+           
+           
+            <div class="col-md-2">{{mang.created_at}}</div>
+            <div class="col-md-2">{{mang.updated_at}}</div>
+            <div class="col-md-1"><a ui-sref="#">DELETE</a></div>
+            <div class="col-md-1"><a ui-sref="#">EDIT</a></div>
+            <hr>
         </div>
     </div>
 </div>

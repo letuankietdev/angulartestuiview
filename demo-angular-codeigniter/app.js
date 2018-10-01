@@ -77,6 +77,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             // controller: function ($scope){
             //     $scope.changestepNumber();
             // }
+            controller: function ($scope,$http){
+                $scope.mangs = [];
+                $http.get('http://localhost/demo-angular-codeigniter/index.php/Example_api/user')
+                    .then(function(result){
+                        $scope.mangs = result.data;
+                    });
+            }
 
         })
 });

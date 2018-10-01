@@ -7,11 +7,11 @@
 <div>
     <form class="form-horizontal" id="User-Form">
         <div class="form-group" id="form-group">
-            <label class="col-sm-3 control-label">Sponsor ID:<span class="text-danger">(*)</span></label>
+            <label class="col-sm-3 control-label">Name:<span class="text-danger">(*)</span></label>
             <div class="col-sm-7">
                 <div class="row inline">
                     <div class="col-xs-4">
-                        <input class="form-control" type="text" autocomplete="off" value="" placeholder="Sponsor ID *"
+                        <input class="form-control" type="text" name="txtName" autocomplete="off" value="" placeholder="Sponsor ID *"
                             maxlength="10" required="required" />
 
                     </div>
@@ -28,6 +28,48 @@
                         </div>
 
                     </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="form-group">
+            <label class="col-sm-3 control-label">Email:<span class="text-danger">(*)</span></label>
+            <div class="col-sm-7">
+                <div class="row inline">
+                    <div class="col-xs-9">
+                        <input class="form-control" type="email" name="txtEmail" autocomplete="off" value="" placeholder="Email *"
+                            maxlength="10" required="required" />
+
+                    </div>
+                  
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="form-group">
+            <label class="col-sm-3 control-label">Password:<span class="text-danger">(*)</span></label>
+            <div class="col-sm-7">
+                <div class="row inline">
+                    <div class="col-xs-9">
+                        <input class="form-control" type="password" name="txtPassword" autocomplete="off" value="" placeholder="Password *"
+                            maxlength="10" required="required" />
+
+                    </div>
+                   
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="form-group">
+            <label class="col-sm-3 control-label">Password Again:<span class="text-danger">(*)</span></label>
+            <div class="col-sm-7">
+                <div class="row inline">
+                    <div class="col-xs-9">
+                        <input class="form-control" type="password" name="txtPasswordagain" autocomplete="off" value="" placeholder="Password Again *"
+                            maxlength="10" required="required" />
+
+                    </div>
+                   
 
                 </div>
             </div>
@@ -61,15 +103,15 @@
         </div>
         <div class="form-group" id="form-group">
             <label class="col-sm-3 control-label">
-                Contact Name: <span class="text-danger">(*)</span>
+                Permission: <span class="text-danger">(*)</span>
 
             </label>
             <div class="col-sm-5" style="position: relative;">
 
                 <select class="form-control" name="contry" id="country">
-                    <option value>Select Country</option>
-                    <option value="MY">USA</option>
-                    <option value="VN">VietNam</option>
+                   
+                    <option value="1">ADMIN</option>
+                    <option value="0">Customer</option>
 
 
                 </select>
