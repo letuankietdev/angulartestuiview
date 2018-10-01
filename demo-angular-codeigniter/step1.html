@@ -1,6 +1,156 @@
-<div>
+<!-- <div>
     <input type="button" value="set Number" ng-click="changestepNumber(1)" /><br/>
     <input type="button" value="Changes Color" ng-click="changebackground()" />
     <input type="button" value="set Color" ng-click="resetcolor('red')" />
     
+</div> -->
+<div>
+    <form class="form-horizontal" id="User-Form">
+        <div class="form-group" id="form-group">
+            <label class="col-sm-3 control-label">Sponsor ID:<span class="text-danger">(*)</span></label>
+            <div class="col-sm-7">
+                <div class="row inline">
+                    <div class="col-xs-4">
+                        <input class="form-control" type="text" autocomplete="off" value="" placeholder="Sponsor ID *"
+                            maxlength="10" required="required" />
+
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="checkbox cboxs">
+                            <label>
+                                <input type="checkbox" id="" name="" oclick="" />
+                                <span class="label-text">
+                                    I do not have Sponsor ID
+
+                                </span>
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="form-group">
+            <label class="col-sm-3 control-label" for="radio-1-2">Enroll as:</label>
+            <div class="col-sm-7">
+                <div class="radio radio-success radio-inline">
+                    <label>
+                        <input type="radio" id="radio-1-2" required="required" />
+                        <span class="circle"></span>
+                        <span class="check"></span>
+                        Business
+                    </label>
+
+
+                </div>
+                <div class="radio radio-success radio-inline">
+                    <label>
+                        <input type="radio" id="radio-1-1" required="required" />
+                        <span class="circle"></span>
+                        <span class="check"></span>
+                        Personal
+                    </label>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="form-group" id="form-group">
+            <label class="col-sm-3 control-label">
+                Contact Name: <span class="text-danger">(*)</span>
+
+            </label>
+            <div class="col-sm-5" style="position: relative;">
+
+                <select class="form-control" name="contry" id="country">
+                    <option value>Select Country</option>
+                    <option value="MY">USA</option>
+                    <option value="VN">VietNam</option>
+
+
+                </select>
+
+
+            </div>
+
+        </div>
+        <div class="form-group" id="form-group">
+            <label class="col-sm-3 control-label" for="first_name">
+                Contact Name: <span class="text-danger">(*)</span>
+
+            </label>
+            <div class="col-sm-7">
+                <div class="row inline">
+
+                    <div class="col-xs-4" id="fname">
+                        <input type="text" size="10" id="first_name" placeholder="First Name *" value maxlength="30"
+                            required="required" id="mname" />
+                    </div>
+
+                    <div class="col-xs-4" id="fname">
+                        <input type="text" size="10" id="first_name" placeholder="MID Name *" value maxlength="30"
+                            required="required" />
+                    </div>
+                    <div class="col-xs-4" id="fname">
+                        <input type="text" size="10" id="first_name" placeholder="LAST Name *" value maxlength="30"
+                            required="required" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group" id="form-group">
+            <label class="col-sm-3 control-label" for="first_name">
+
+
+            </label>
+            <div class="col-sm-7"></div>
+            <label><input type="checkbox" />
+                If you agree to our member's <span class="text-success">terms & agreements</span> then please check
+                the box to continue.</label>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+
+
+            </label>
+            <div class="col-sm-offset col-sm-7">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button id="btnsub" type="submit" class="btn blue btn-success btn-lg next">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
 </div>
+<!-- <style>
+    #first_name {
+        color: rgb(51, 51, 51);
+        display: block;
+        float: left;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        padding-left: 0;
+        padding-right: 0;
+        position: relative;
+        text-size-adjust: 100%;
+        width: 160px;
+    }
+
+    #fname {
+        width: 160px;
+    }
+
+    #btnsub {
+        width: 200px;
+        font-size: 20;
+    }
+</style> -->

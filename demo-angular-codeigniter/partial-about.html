@@ -3,15 +3,20 @@
     <p>This page demonstrates <span class="text-danger">multiple</span> views.</p>
 
     <h3>{{stepNumber}}</h3>
-    <div ng-style="backgroudColor">
+    <!-- <div ng-style="backgroudColor">
 
         <span>{{backgroudColor}}</span>
 
 
+    </div>  -->
+    <div class="row">
+        <div class="col-xs-6 col-md-3"><a ui-sref=".step1">Step 1</a></div>
+        <div class="col-xs-6 col-md-3"><a ui-sref=".step2">Step 2</a></div>
+        <div class="col-xs-6 col-md-3"><a ui-sref="#">Step 3</a></div>
+        <div class="col-xs-6 col-md-3"><a ui-sref="#">Step 4</a></div>
     </div>
-   
-    <a ui-sref=".step1">Step 1</a>
-    <a ui-sref=".step2">Step2</a>
+
+
 
     <!-- <div class="col-sm-6">
             <div ui-view="columnOne"></div>
@@ -22,3 +27,5 @@
 
 </div>
 <div ui-view></div>
+<style>
+</style>
