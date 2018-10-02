@@ -7,26 +7,53 @@
         <span>Danh sách user:</span>
         <hr>
         <div class="row" >
-            <div class="col-md-2">ID</div>
-            <div class="col-md-2">NAME</div>
-            <div class="col-md-2">email</div>
+            <div class="col-md-2" align="center">ID</div>
+            <div class="col-md-2" align="center">NAME</div>
+            <div class="col-md-2" align="center">email</div>
            
            
-            <div class="col-md-2">create_at</div>
-            <div class="col-md-2">update_at</div>
+            <div class="col-md-2" align="center" >create_at</div>
+            <div class="col-md-2" align="center">update_at</div>
         </div>
         <hr>
         <div class="row" ng-repeat="mang in mangs">
-            <div class="col-md-2">{{mang.id}}</div>
-            <div class="col-md-2">{{mang.name}}</div>
-            <div class="col-md-2">{{mang.email}}</div>
+            <div class="col-md-2" align="center">
+                <label >{{mang.id}}</label> 
+                
+            </div>
+            <div class="col-md-2" align="center">
+                    <label ng-if="checked == 0">{{mang.name}}</label>
+                    <input ng-if="checked == mang.id" type="text" name="txtName" placeholder="{{mang.name}}" />    
+            </div>
+            <div class="col-md-2" align="center">
+                <label ng-if="checked == 0">{{mang.email}}</label>
+                <input ng-if="checked == mang.id" type = "email" name ="txtName" placeholder="{{mang.email}}" />
+            </div>
            
            
-            <div class="col-md-2">{{mang.created_at}}</div>
-            <div class="col-md-2">{{mang.updated_at}}</div>
-            <div class="col-md-1"><a ui-sref="#">DELETE</a></div>
-            <div class="col-md-1"><a ui-sref="#">EDIT</a></div>
+            <div class="col-md-2" align="center">
+                <label ng-if="checked == 0">{{mang.created_at}}</label>
+                <input ng-if="checked == mang.id" type="datetime" name="datatime" placeholder="{{mang.created_at}}" />
+            </div>
+            <div class="col-md-2" align="center">
+                <label ng-if="checked == 0">{{mang.updated_at}}</label>
+                <input ng-if="checked == mang.id" type="datetime" name="datatime" placeholder="{{mang.updated_at}}" />
+            </div>
+            <div class="col-md-1" align="center">
+                <button ng-if="checked==0" type="button" class="btn btn-danger">Delete</button>
+                <button ng-if="  checked == mang.id" ng-click ="cancel()" type="button" class="btn btn-warning">Cancel</button>
+            </div>
+            <div class="col-md-1" align="center">
+                <button ng-if="checked==0" type="button" ng-click="edit(mang.id)" class="btn btn-info">EDIT</button>
+                <button ng-if=" checked == mang.id" ng-click="save()" type="button" class="btn btn-success">SAVE</button>
+            </div>
+            
             <hr>
         </div>
+        <!-- <label>Click me: <input type="checkbox" ng-model="checked" ng-init="checked=false" /></label><br />
+        Show when checked:
+        <span ng-if="checked" class="animate-if">
+            This is removed when the checkbox is unchecked.
+        </span> -->
     </div>
 </div>

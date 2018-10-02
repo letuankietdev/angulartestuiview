@@ -5,14 +5,14 @@
     
 </div> -->
 <div>
-    <form class="form-horizontal" id="User-Form">
+    <form class="form-horizontal" id="User-Form" ng-submit="insert(info)">
         <div class="form-group" id="form-group">
             <label class="col-sm-3 control-label">Name:<span class="text-danger">(*)</span></label>
             <div class="col-sm-7">
                 <div class="row inline">
                     <div class="col-xs-4">
-                        <input class="form-control" type="text" name="txtName" autocomplete="off" value="" placeholder="Sponsor ID *"
-                            maxlength="10" required="required" />
+                        <input class="form-control" type="text" name="txtName" ng-model="info.name" autocomplete="off"
+                            value="" placeholder="Sponsor ID *" maxlength="150" required="required" />
 
                     </div>
                     <div class="col-xs-4">
@@ -37,11 +37,11 @@
             <div class="col-sm-7">
                 <div class="row inline">
                     <div class="col-xs-9">
-                        <input class="form-control" type="email" name="txtEmail" autocomplete="off" value="" placeholder="Email *"
-                            maxlength="10" required="required" />
+                        <input class="form-control" type="email" ng-model="info.email" name="txtEmail" autocomplete="off"
+                            value="" placeholder="Email *" maxlength="150" required="required" />
 
                     </div>
-                  
+
 
                 </div>
             </div>
@@ -51,11 +51,11 @@
             <div class="col-sm-7">
                 <div class="row inline">
                     <div class="col-xs-9">
-                        <input class="form-control" type="password" name="txtPassword" autocomplete="off" value="" placeholder="Password *"
-                            maxlength="10" required="required" />
+                        <input class="form-control" ng-model="info.password" type="password" name="txtPassword"
+                            autocomplete="off" value="" placeholder="Password *" maxlength="10" required="required" />
 
                     </div>
-                   
+
 
                 </div>
             </div>
@@ -65,42 +65,16 @@
             <div class="col-sm-7">
                 <div class="row inline">
                     <div class="col-xs-9">
-                        <input class="form-control" type="password" name="txtPasswordagain" autocomplete="off" value="" placeholder="Password Again *"
-                            maxlength="10" required="required" />
+                        <input class="form-control" type="password" name="txtPasswordagain" autocomplete="off" value=""
+                            placeholder="Password Again *" maxlength="10" required="required" />
 
                     </div>
-                   
+
 
                 </div>
             </div>
         </div>
-        <div class="form-group" id="form-group">
-            <label class="col-sm-3 control-label" for="radio-1-2">Enroll as:</label>
-            <div class="col-sm-7">
-                <div class="radio radio-success radio-inline">
-                    <label>
-                        <input type="radio" id="radio-1-2" required="required" />
-                        <span class="circle"></span>
-                        <span class="check"></span>
-                        Business
-                    </label>
 
-
-                </div>
-                <div class="radio radio-success radio-inline">
-                    <label>
-                        <input type="radio" id="radio-1-1" required="required" />
-                        <span class="circle"></span>
-                        <span class="check"></span>
-                        Personal
-                    </label>
-
-
-                </div>
-
-            </div>
-
-        </div>
         <div class="form-group" id="form-group">
             <label class="col-sm-3 control-label">
                 Permission: <span class="text-danger">(*)</span>
@@ -108,8 +82,8 @@
             </label>
             <div class="col-sm-5" style="position: relative;">
 
-                <select class="form-control" name="contry" id="country">
-                   
+                <select class="form-control" ng-model="info.quyen" name="contry" id="country">
+
                     <option value="1">ADMIN</option>
                     <option value="0">Customer</option>
 
@@ -119,30 +93,6 @@
 
             </div>
 
-        </div>
-        <div class="form-group" id="form-group">
-            <label class="col-sm-3 control-label" for="first_name">
-                Contact Name: <span class="text-danger">(*)</span>
-
-            </label>
-            <div class="col-sm-7">
-                <div class="row inline">
-
-                    <div class="col-xs-4" id="fname">
-                        <input type="text" size="10" id="first_name" placeholder="First Name *" value maxlength="30"
-                            required="required" id="mname" />
-                    </div>
-
-                    <div class="col-xs-4" id="fname">
-                        <input type="text" size="10" id="first_name" placeholder="MID Name *" value maxlength="30"
-                            required="required" />
-                    </div>
-                    <div class="col-xs-4" id="fname">
-                        <input type="text" size="10" id="first_name" placeholder="LAST Name *" value maxlength="30"
-                            required="required" />
-                    </div>
-                </div>
-            </div>
         </div>
 
 
@@ -169,8 +119,9 @@
                 </div>
             </div>
         </div>
-
+       
     </form>
+
 </div>
 <!-- <style>
     #first_name {

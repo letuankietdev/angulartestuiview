@@ -1,60 +1,60 @@
 var routerApp = angular.module('routerApp', ['ui.router']);
 
-routerApp.config(function($stateProvider, $urlRouterProvider) {
+routerApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
 
-        
+
         .state('home', {
             url: '/home',
             templateUrl: 'partial-home.html',
-           
-            
+
+
 
         })
-    
-        
+
+
         .state('home.list', {
             url: '/list',
             templateUrl: 'partial-home-list.html',
-            controller: function($scope) {
+            controller: function ($scope) {
                 $scope.peoples = ['Kiet', 'Phung', 'MoMo'];
 
             }
         })
-    
+
         .state('home.paragraph', {
             url: '/paragraph',
             template: 'I could sure use a drink right now.'
 
         })
-        .state('about',{
-            url:'/about',
-            templateUrl:'partial-about.html',
-            controller:function($scope){
-                $scope.stepNumber=0;
-                $scope.backgroudColor={"background-color": "red"};
+        .state('about', {
+            url: '/about',
+            templateUrl: 'partial-about.html',
+            controller: function ($scope) {
+                $scope.stepNumber = 0;
+                $scope.backgroudColor = { "background-color": "red" };
 
-                $scope.changestepNumber = function(newvlaue){
+                $scope.changestepNumber = function (newvlaue) {
                     $scope.stepNumber = newvlaue;
                 }
-               
-                $scope.plushNumber = function(){
-                    $scope.stepNumber = $scope.stepNumber  +1;
-                 }
-                 $scope.minusNumber = function(){
-                    $scope.stepNumber = $scope.stepNumber  -1;
-                 }
-                 $scope.changebackground = function (){
-                     $scope.backgroudColor = {"background-color":"blue"}
-                 }
-                 $scope.resetcolor= function(value){
-                     $scope.backgroudColor= {"background-color":value};
-                 }
 
-                 
+                $scope.plushNumber = function () {
+                    $scope.stepNumber = $scope.stepNumber + 1;
+                }
+                $scope.minusNumber = function () {
+                    $scope.stepNumber = $scope.stepNumber - 1;
+                }
+                $scope.changebackground = function () {
+                    $scope.backgroudColor = { "background-color": "blue" }
+                }
+                $scope.resetcolor = function (value) {
+                    $scope.backgroudColor = { "background-color": value };
+                }
+
+
             }
             // views:{
             //     '':{templateUrl:'partial-about.html'},
@@ -66,39 +66,85 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             // }
 
         })
-        .state('about.step1',{
-            url:'/step1',
-            templateUrl:'step1.html'
+        .state('about.step1', {
+            url: '/step1',
+            templateUrl: 'step1.html',
+            controller: function ($scope) {
+                $scope.getdata = function ($scope, $http) {
 
-        })
-        .state('about.step2',{
-            url:'/step2',
-            templateUrl:'step2.html',
-            // controller: function ($scope){
-            //     $scope.changestepNumber();
-            // }
-            controller: function ($scope,$http){
-                $scope.mangs = [];
-                $http.get('http://localhost/demo-angular-codeigniter/index.php/Example_api/user')
-                    .then(function(result){
-                        $scope.mangs = result.data;
+                    $http.get('http://localhost/demo-angular-codeigniter/index.php/Example_api/user')
+                        .then(function (result) {
+                            $scope.mangs = result.data;
+                        });
+                }
+                $scope.insert = function (data) {
+                    $http.post('http://localhost/demo-angular-codeigniter/index.php/Example_api/user', {
+                        "data": data.name, "email": data.email, "password": data.password, "quyen": data.quyen
+                    }).success(function (db) {
+                        if (db == true) {
+
+                        }
+
                     });
+                }
             }
 
         })
+        .state('about.step2', {
+            url: '/step2',
+            templateUrl: 'step2.html',
+            // controller: function ($scope){
+            //     $scope.changestepNumber();
+            // }
+            controller: function ($scope, $http) {
+
+                $http.get('http://localhost/demo-angular-codeigniter/index.php/Example_api/user')
+                    .then(function (result) {
+                        $scope.mangs = result.data;
+                    });
+                $scope.buttonText = "EDIT";
+                $scope.typebutton = "btn btn-info";
+                $scope.checked = 0;
+                
+                $scope.edit = function (value){
+                    $scope.checked = value;
+                    // alert($scope.mangs.length);
+                    // for(var i=0 ; i< $scope.mangs.length; i++){
+                    //        if($scope.mangs[i]){
+                    //            alert(i);
+                    //        }
+                    // }
+                }
+                $scope.save = function (){
+                    $scope.checked = 0;
+                        
+
+                    
+                    
+                    
+                }
+                $scope.cancel = function () {
+                    $scope.checked=0
+                }
+                
+            }
+
+
+
+        })
 });
-routerApp.controller('scotController',function($scope){
+routerApp.controller('scotController', function ($scope) {
     $scope.scotches = [
         {
             name: 'Ngoc trinh',
             price: 1500
         },
         {
-            name:'Chi Pu',
+            name: 'Chi Pu',
             prive: 2000
         },
         {
-            name:'Minh Hang',
+            name: 'Minh Hang',
             price: 3000
         }
     ];

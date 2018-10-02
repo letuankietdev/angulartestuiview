@@ -21,18 +21,34 @@ class Example_api extends REST_Controller{
       $r = $this->User_model->read();
       $this->response($r); 
   }
-  public function user_put(){
-    $id = $this->uri->segment(3);
-
-    $data = array('name' => $this->input->get('name'),
-    'password' => $this->input->get('password'),
-    'email' => $this->input-get('email'),
-    'quyen' => $this->input->get('quyen')
+    public function tintuc_get(){
+        $r = $this->Tintuc_model->tintuc();
+        $this->response($r);
+    }
+    // public function user_post(){
+    //     $data = array('name'=>$this->input->post('name'),
+    //                   'email'=>$this->input->post('email'),
+    //                   'password'=>$this->input->post('password'),
+    //                   'quyen'=>$this->input->post('quyen')
+    //      );
+    //      $r = $this->User_model->insert($data);
+    //      $this->reponse($r);
+         
+    // }
+    public function user_post(){
+        $id = $this->uri->segment(4);
+        $data = array ('name'=>$this->input->post('name'),
+                        'email'=>$this->input->post('email'),
+                        'created_at'=>$this->input->post('created_at'),
+                        'updated_at'=>$this->input->post('updated_at')
     );
+        $r = $this->User_model->update($id,$data);
+        $this->response($r);
 
-     $r = $this->User_model->update($id,$data);
-        $this->response($r); 
-}
+
+    }
+    
+
 
 
 }
