@@ -16,6 +16,7 @@ class User_model extends CI_Model
     public function __construct(){
         parent::__construct();
          $this->load->database();
+         $this->load->model('User_model','model');
      }
     public function read(){
  
@@ -27,17 +28,25 @@ class User_model extends CI_Model
  
    }
   
-   public function insert($data){
-       $this->name = $data['name'];
-       $this->enail = $data['email'];
-       $this->quyen = $data['quyen'];
-       $this->password = $data['password'];
-        if($this->db->insert(`users`, $this)){
-            return "Insert success";
-        }
-        else{
-            return "Error";
-        }
+   public function addUser($data){
+        $query = $this->db->insert('users',$data);
+        $num_inserts = $this->db->affected_rows();
+        return $num_inserts;
+        // $data = array('name' => $name, 'email'=>$email,'password'=>$password,'quyen'=>$quyen);
+        // $this->db->insert('users',$data);
+        // $insert_id = $this->db->affected_rows();
+        // return $insert_id();
+    //    $this->name = $data['name'];
+    //    $this->enail = $data['email'];
+    //    $this->quyen = $data['quyen'];
+    //    $this->password = $data['password'];
+    //     if($this->db->insert(`users`, $this)){
+    //         return "Insert success";
+    //     }
+    //     else{
+    //         return "Error";
+    //     }
+
    }
    public function update($id, $data){
        $this->name = $data['name'];
@@ -51,6 +60,10 @@ class User_model extends CI_Model
        else{
            return "Error";
        }
+        // $this->db->where('id',$id);
+        // $this->db->update('users',$data);
+        // $num_inserts = $this->db->affected_rows();
+        // return $num_inserts;
    }
  
  

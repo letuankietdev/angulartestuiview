@@ -22,30 +22,30 @@
                 
             </div>
             <div class="col-md-2" align="center">
-                    <label ng-if="checked == 0">{{mang.name}}</label>
-                    <input ng-if="checked == mang.id" type="text" name="txtName" placeholder="{{mang.name}}" />    
+                    <label ng-if="!checked[mang.id]">{{mang.name}}</label>
+                    <input ng-if="checked[mang.id]" type="text" ng-model="mang.name" name="txtName" placeholder="{{mang.name}}" />    
             </div>
             <div class="col-md-2" align="center">
-                <label ng-if="checked == 0">{{mang.email}}</label>
-                <input ng-if="checked == mang.id" type = "email" name ="txtName" placeholder="{{mang.email}}" />
+                <label ng-if="!checked[mang.id]">{{mang.email}}</label>
+                <input ng-if="checked[mang.id]" type = "email" ng-model="mang.email" name ="txtName" placeholder="{{mang.email}}" />
             </div>
            
            
             <div class="col-md-2" align="center">
-                <label ng-if="checked == 0">{{mang.created_at}}</label>
-                <input ng-if="checked == mang.id" type="datetime" name="datatime" placeholder="{{mang.created_at}}" />
+                <label ng-if="!checked[mang.id]">{{mang.created_at}}</label>
+                <input ng-if="checked[mang.id]" type="datetime" ng-model="mang.created_at" name="datatime" placeholder="{{mang.created_at}}" />
             </div>
             <div class="col-md-2" align="center">
-                <label ng-if="checked == 0">{{mang.updated_at}}</label>
-                <input ng-if="checked == mang.id" type="datetime" name="datatime" placeholder="{{mang.updated_at}}" />
+                <label ng-if="!checked[mang.id]">{{mang.updated_at}}</label>
+                <input ng-if="checked[mang.id]" type="datetime" ng-model="mang.updated_at" name="datatime" placeholder="{{mang.updated_at}}" />
             </div>
             <div class="col-md-1" align="center">
-                <button ng-if="checked==0" type="button" class="btn btn-danger">Delete</button>
-                <button ng-if="  checked == mang.id" ng-click ="cancel()" type="button" class="btn btn-warning">Cancel</button>
+                <button ng-if="!checked[mang.id]" type="button" class="btn btn-danger">Delete</button>
+                <button ng-if="checked[mang.id]" ng-click ="cancel(mang.id)" type="button" class="btn btn-warning">Cancel</button>
             </div>
             <div class="col-md-1" align="center">
-                <button ng-if="checked==0" type="button" ng-click="edit(mang.id)" class="btn btn-info">EDIT</button>
-                <button ng-if=" checked == mang.id" ng-click="save()" type="button" class="btn btn-success">SAVE</button>
+                <button ng-if="!checked[mang.id]" type="button" ng-click="edit(mang.id)" class="btn btn-info">EDIT</button>
+                <button ng-if="checked[mang.id]" ng-click="save(mang)" type="button" class="btn btn-success">SAVE</button>
             </div>
             
             <hr>

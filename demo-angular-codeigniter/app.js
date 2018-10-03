@@ -1,5 +1,5 @@
 var routerApp = angular.module('routerApp', ['ui.router']);
-
+'use strict';
 routerApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/home');
@@ -77,16 +77,27 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                             $scope.mangs = result.data;
                         });
                 }
-                $scope.insert = function (data) {
-                    $http.post('http://localhost/demo-angular-codeigniter/index.php/Example_api/user', {
-                        "data": data.name, "email": data.email, "password": data.password, "quyen": data.quyen
-                    }).success(function (db) {
-                        if (db == true) {
+                // $scope.insert = function (data) {
+                //     $http.post('http://localhost/demo-angular-codeigniter/index.php/Example_api/user', {
+                //         "data": data.name, "email": data.email, "password": data.password, "quyen": data.quyen
+                //     }).success(function (db) {
+                //         if (db == true) {
+                                                                                                        
+                //         }
 
-                        }
+                //     });
+                // }
+                $scope.addUser = function (name, email, password, quyen,$http) {
+                    // alert("asdasda");
+                    $http.post("http://localhost/demo-angular-codeigniter/index.php/Example_api/addUser", {
+                        'name': name, 'email': email, 'password': password, 'quyen': quyen
+                    }).success(function (response) { $scope.answer = response })
+                        .error(function (response) {
+                            alert('error');
+                            $scope.answer = response;
+                        });
+                };
 
-                    });
-                }
             }
 
         })
@@ -104,10 +115,11 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                     });
                 $scope.buttonText = "EDIT";
                 $scope.typebutton = "btn btn-info";
-                $scope.checked = 0;
-                
-                $scope.edit = function (value){
-                    $scope.checked = value;
+                $scope.checked = {};
+
+                $scope.edit = function (id, value) {
+                    if(value === undefined) value = true;
+                    $scope.checked[id] = value;
                     // alert($scope.mangs.length);
                     // for(var i=0 ; i< $scope.mangs.length; i++){
                     //        if($scope.mangs[i]){
@@ -115,18 +127,46 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                     //        }
                     // }
                 }
-                $scope.save = function (){
-                    $scope.checked = 0;
-                        
+                $scope.save = function (data) {
 
-                    
-                    
-                    
+                   
+
+
+                  
+                    var config = {
+                        headers: {
+                            "Content-Type": "application/json",
+                            
+
+                        }
+                    }
+                    $http.post("http://localhost/demo-angular-codeigniter/index.php/Example_api/user", data)
+                        .success(function () {
+                            // $scope.PostDataResponse = data;
+                            console.log(data.id);
+                            alert("Update success");
+                            $scope.checked = {};
+
+                        })
+                        .error(function (data, status, header, config) {
+                            // $scope.ResponeseDetails = "Data: " + data +
+                            //     "<hr /> status:" + status +
+                            //     "<hr /> headers:" + header +
+                            //     "<hr /> config:" + config;
+                        })
+
+
+
+
+
+
+
+
                 }
-                $scope.cancel = function () {
-                    $scope.checked=0
+                $scope.cancel = function (id) {
+                    delete $scope.checked[id]
                 }
-                
+
             }
 
 

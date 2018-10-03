@@ -5,13 +5,13 @@
     
 </div> -->
 <div>
-    <form class="form-horizontal" id="User-Form" ng-submit="insert(info)">
+    <form class="form-horizontal" id="User-Form">
         <div class="form-group" id="form-group">
             <label class="col-sm-3 control-label">Name:<span class="text-danger">(*)</span></label>
             <div class="col-sm-7">
                 <div class="row inline">
                     <div class="col-xs-4">
-                        <input class="form-control" type="text" name="txtName" ng-model="info.name" autocomplete="off"
+                        <input class="form-control" type="text" ng-model="name" name="txtName"  autocomplete="off"
                             value="" placeholder="Sponsor ID *" maxlength="150" required="required" />
 
                     </div>
@@ -37,7 +37,7 @@
             <div class="col-sm-7">
                 <div class="row inline">
                     <div class="col-xs-9">
-                        <input class="form-control" type="email" ng-model="info.email" name="txtEmail" autocomplete="off"
+                        <input class="form-control" type="email" ng-model="email" name="txtEmail" autocomplete="off"
                             value="" placeholder="Email *" maxlength="150" required="required" />
 
                     </div>
@@ -51,7 +51,7 @@
             <div class="col-sm-7">
                 <div class="row inline">
                     <div class="col-xs-9">
-                        <input class="form-control" ng-model="info.password" type="password" name="txtPassword"
+                        <input class="form-control" ng-model="password" type="password" name="txtPassword"
                             autocomplete="off" value="" placeholder="Password *" maxlength="10" required="required" />
 
                     </div>
@@ -82,7 +82,7 @@
             </label>
             <div class="col-sm-5" style="position: relative;">
 
-                <select class="form-control" ng-model="info.quyen" name="contry" id="country">
+                <select class="form-control" ng-model="quyen" name="contry" id="country">
 
                     <option value="1">ADMIN</option>
                     <option value="0">Customer</option>
@@ -114,7 +114,7 @@
             <div class="col-sm-offset col-sm-7">
                 <div class="row">
                     <div class="col-sm-6">
-                        <button id="btnsub" type="submit" class="btn blue btn-success btn-lg next">Submit</button>
+                        <button id="btnsub" type="submit" ng-click="addUser(name, email, password, quyen)" class="btn blue btn-success btn-lg next">Submit</button>
                     </div>
                 </div>
             </div>
