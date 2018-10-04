@@ -112,7 +112,7 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
             // }
             controller: function ($scope, $http) {
 
-                $http.get('http://localhost/demo-angular-codeigniter/index.php/Example_api/user')
+                $http.get('http://localhost:8080/demo-angular-codeigniter/index.php/Example_api/user')
                     .then(function (result) {
                         $scope.mangs = result.data;
                     });
@@ -143,7 +143,7 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
 
                         }
                     }
-                    $http.post("http://localhost/demo-angular-codeigniter/index.php/Example_api/user", data)
+                    $http.post("http://localhost:8080/demo-angular-codeigniter/index.php/Example_api/user", data)
                         .success(function () {
                             // $scope.PostDataResponse = data;
                             console.log(data.id);
@@ -180,41 +180,45 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
             url: '/step3/:id',
             templateUrl: 'step3.html',
             controller: function ($scope, $http,$stateParams) {
-                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/tintuchot")
+                $http.get("http://localhost:8080/demo-angular-codeigniter/index.php/Tintuc_api/tintuchot")
                     .then(function (result) {
                         $scope.tintuchots = result.data
                     });
-                $http.get("http://localhost/demo-angular-codeigniter/index.php/Theloai_api/Theloai")
+                $http.get("http://localhost:8080/demo-angular-codeigniter/index.php/Theloai_api/Theloai")
                     .then(function (result) {
                         $scope.theloais = result.data;
                     });
-                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/Tintucnew")
+                $http.get("http://localhost:8080/demo-angular-codeigniter/index.php/Tintuc_api/Tintucnew")
                     .then(function (result) {
                         $scope.tintucmois = result.data;
                     })
-                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/Tintucreadmore")
+                $http.get("http://localhost:8080/demo-angular-codeigniter/index.php/Tintuc_api/Tintucreadmore")
                     .then(function (result) {
                         $scope.tintucnhieus = result.data;
                     })
                     // $scope.param = $stateParams.param === null ? 'NULL' : $stateParams.param;
-                    $scope.id = $stateParams.id;
+                    $stateParams.contactId 
                     
 
             },
+            resolve:{
+                contactId: ['$stateParams', function($stateParams){
+                    return $stateParams.contactId;
+                }]
+             }
            
             
         })
         .state('about.readtintuc', {
             url: '/readtintuc/:id',
             templateUrl: 'readtintuc.html',
-            resolveId: function($stateParams,$scope) {
-                $scope.id = $stateParams.id;
-                
-            },
            
-            controller: function ($scope,$http){
-                console.log("adasdas"+$scope.id);
-                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/readtintuc",$scope.id)
+           
+            controller: function ($scope,$http,$stateParams){
+                // contactId
+                // $stateParams.id
+                console.log("adasdas",$stateParams.id);
+                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/readtintuc",$stateParams.id)
                 .then(function (result) {
                     $scope.readtins = result.data;
 
