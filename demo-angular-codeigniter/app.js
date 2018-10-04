@@ -2,7 +2,7 @@ var routerApp = angular.module('routerApp', ['ui.router']);
 'use strict';
 routerApp.config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/about/step3');
 
     $stateProvider
 
@@ -33,7 +33,9 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('about', {
             url: '/about',
             templateUrl: 'partial-about.html',
+        
             controller: function ($scope) {
+                $scope.id =0;
                 $scope.stepNumber = 0;
                 $scope.backgroudColor = { "background-color": "red" };
 
@@ -82,12 +84,12 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                 //         "data": data.name, "email": data.email, "password": data.password, "quyen": data.quyen
                 //     }).success(function (db) {
                 //         if (db == true) {
-                                                                                                        
+
                 //         }
 
                 //     });
                 // }
-                $scope.addUser = function (name, email, password, quyen,$http) {
+                $scope.addUser = function (name, email, password, quyen, $http) {
                     // alert("asdasda");
                     $http.post("http://localhost/demo-angular-codeigniter/index.php/Example_api/addUser", {
                         'name': name, 'email': email, 'password': password, 'quyen': quyen
@@ -101,6 +103,7 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
             }
 
         })
+
         .state('about.step2', {
             url: '/step2',
             templateUrl: 'step2.html',
@@ -118,7 +121,7 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                 $scope.checked = {};
 
                 $scope.edit = function (id, value) {
-                    if(value === undefined) value = true;
+                    if (value === undefined) value = true;
                     $scope.checked[id] = value;
                     // alert($scope.mangs.length);
                     // for(var i=0 ; i< $scope.mangs.length; i++){
@@ -129,14 +132,14 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                 }
                 $scope.save = function (data) {
 
-                   
 
 
-                  
+
+
                     var config = {
                         headers: {
                             "Content-Type": "application/json",
-                            
+
 
                         }
                     }
@@ -171,6 +174,57 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
 
 
 
+
+        })
+        .state('about.step3', {
+            url: '/step3/:id',
+            templateUrl: 'step3.html',
+            controller: function ($scope, $http,$stateParams) {
+                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/tintuchot")
+                    .then(function (result) {
+                        $scope.tintuchots = result.data
+                    });
+                $http.get("http://localhost/demo-angular-codeigniter/index.php/Theloai_api/Theloai")
+                    .then(function (result) {
+                        $scope.theloais = result.data;
+                    });
+                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/Tintucnew")
+                    .then(function (result) {
+                        $scope.tintucmois = result.data;
+                    })
+                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/Tintucreadmore")
+                    .then(function (result) {
+                        $scope.tintucnhieus = result.data;
+                    })
+                    // $scope.param = $stateParams.param === null ? 'NULL' : $stateParams.param;
+                    $scope.id = $stateParams.id;
+                    
+
+            },
+           
+            
+        })
+        .state('about.readtintuc', {
+            url: '/readtintuc/:id',
+            templateUrl: 'readtintuc.html',
+            resolveId: function($stateParams,$scope) {
+                $scope.id = $stateParams.id;
+                
+            },
+           
+            controller: function ($scope,$http){
+                console.log("adasdas"+$scope.id);
+                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/readtintuc",$scope.id)
+                .then(function (result) {
+                    $scope.readtins = result.data;
+
+                    console.log(result.data);
+                })
+            }
+        })
+        .state('about.step4', {
+            url: '/step4',
+            templateUrl: 'step4.html'
         })
 });
 routerApp.controller('scotController', function ($scope) {

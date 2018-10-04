@@ -1,21 +1,65 @@
-<div class="jumbotron text-center">
-    <h1>The About Page</h1>
+
+  <!-- <h1>The About Page</h1>
     <p>This page demonstrates <span class="text-danger">multiple</span> views.</p>
 
-    <h3>{{stepNumber}}</h3>
-    <!-- <div ng-style="backgroudColor">
+    <h3>{{stepNumber}}</h3> -->
+  <!-- <div ng-style="backgroudColor">
 
         <span>{{backgroudColor}}</span>
 
 
     </div>  -->
-    <div class="row">
-        <div class="col-xs-6 col-md-3"><a ui-sref=".step1">Step 1</a></div>
-        <div class="col-xs-6 col-md-3"><a ui-sref=".step2">Step 2</a></div>
-        <div class="col-xs-6 col-md-3"><a ui-sref="#">Step 3</a></div>
-        <div class="col-xs-6 col-md-3"><a ui-sref="#">Step 4</a></div>
+  <div class="row carousel-holder">
+    <div class="col-md-12">
+
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators" <li data-target="#carousel-example-generic" data-slide-to="0" class="active">
+          </li>
+
+        </ol>
+        <div class="carousel-inner">
+
+
+          <div class="item active " class="item">
+
+
+
+
+            <img class="col-md-12" src="./public/slide/1.jpg" >
+
+          </div>
+
+
+        </div>
+
+     
+      </div>
     </div>
 
+    <nav class="col-sm-12">
+      <div class="row" id="divs">
+
+        <div class="col-sm-8">
+
+          <ul class="nav nav-pills flex-column">
+            <div class="col-sm-3" id="divnav"><a id="linknav" ui-sref=".step1"><label id="labelnav">Step 1</label></a></div>
+            <div class="col-sm-3" id="divnav"><a ui-sref=".step2"><label id="labelnav">Step 2</label></a></div>
+            <div class="col-sm-3" id="divnav"><a ui-sref=".step3"><label id="labelnav">NEWS</label></a></div>
+            <div class="col-sm-3" id="divnav"><a ui-sref=".step4"><label id="labelnav">Step 4</label></a></div>
+          </ul>
+        </div>
+        <form class="col-sm-4">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="search">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </nav>
 
 
     <!-- <div class="col-sm-6">
@@ -25,7 +69,35 @@
                 <div ui-view="columnTwo"></div>
             </div> -->
 
-</div>
+  </div>
+
 <div ui-view></div>
 <style>
+  #divs {
+    background-color: #AAAAAA;
+  }
+
+  #labelnav {
+    color: #FFF;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+  }
+
+  #divnav {
+    height: 30px;
+    align: 'center';
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+
+  }
+
+  #labelnav:hover {
+    color: #FF9933;
+  }
+
+  #linknav {
+    align-items: center;
+  }
 </style>
