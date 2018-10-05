@@ -75,6 +75,13 @@ class Example_api extends REST_Controller{
 
 
     }
+    public function userlogin_post(){
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $query = $this->User_nodel->login($email, $password);
+        echo json_encode($query);
+
+    }
     
 
 

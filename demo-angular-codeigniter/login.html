@@ -1,0 +1,52 @@
+<div >
+   
+           
+            <form class="form-horizontal">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                <div class="form-group" id="form-group">
+                       
+                    <label class="col-sm-3 control-label">Email:<span class="text-danger">(*)</span></label>
+                    <div class="col-sm-7">
+                        <div class="row inline">
+                            <div class="col-xs-9">
+                                <input class="form-control" type="email" ng-model="email" name="txtEmail" autocomplete="off"
+                                    value="" placeholder="Email *" maxlength="150" required="required" />
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="form-group">
+                       
+                        <label class="col-sm-3 control-label">Password:<span class="text-danger">(*)</span></label>
+                        <div class="col-sm-7">
+                            <div class="row inline">
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="password" ng-model="password" name="txtpassword" autocomplete="off"
+                                        value="" placeholder="password *" maxlength="150" required="required" />
+    
+                                </div>
+    
+
+                            </div>
+                           
+                        </div>
+                        
+                    </div>
+                    <div class="form-group" id="form-group">
+                            <label class="col-sm-5 control-label"></label>
+                            <button type="submit" class="btn btn-info">Đăng nhập
+                                </button>
+                    </div>
+                    
+               
+               
+              
+            </form>
+        </div>
+
+    </div>
+
+</div>

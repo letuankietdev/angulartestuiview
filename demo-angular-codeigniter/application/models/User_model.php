@@ -65,6 +65,10 @@ class User_model extends CI_Model
         // $num_inserts = $this->db->affected_rows();
         // return $num_inserts;
    }
+   public function loagin($email,$password){
+    $query =  $this->db->get_where('users', array('email' =>$email, 'password'=>$password));
+    return $query->result_array();
+   }
  
  
  

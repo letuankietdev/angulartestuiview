@@ -30,6 +30,24 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
             template: 'I could sure use a drink right now.'
 
         })
+        .state('login',{
+            url:'/login',
+            templateUrl:'login.html',
+            controller: function ($scope, $http){
+                $scope.email="";
+                $http("http://localhost/demo-angular-codeigniter/index.php/Example_api/userlogin",{
+                    params :{email:$scope.email, password:$scope.password}
+                })
+                .then(function (result){
+                     if(result.data != null){
+
+                     }
+                     else{
+                         
+                     }
+                })
+            }
+        })
         .state('about', {
             url: '/about',
             templateUrl: 'partial-about.html',
@@ -197,35 +215,40 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                         $scope.tintucnhieus = result.data;
                     })
                     // $scope.param = $stateParams.param === null ? 'NULL' : $stateParams.param;
-                    $scope.id = $stateParams.id;
+                    $stateParams.contactId 
                     
 
             },
-           
+            resolve:{
+                contactId: ['$stateParams', function($stateParams){
+                    return $stateParams.contactId;
+                }]
+             }
             
         })
         .state('about.readtintuc', {
             url: '/readtintuc/:id',
             templateUrl: 'readtintuc.html',
-            resolveId: function($stateParams,$scope) {
-                $scope.id = $stateParams.id;
-                
-            },
-           
-            controller: function ($scope,$http){
-                console.log("adasdas"+$scope.id);
-                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/readtintuc",$scope.id)
+            controller: function ($scope,$http,$stateParams){
+                // contactId
+                // $stateParams.id
+                // console.log("adasdas",$stateParams.id);
+                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/readtintuc",{
+                    params :{id:$stateParams.id}
+                })
                 .then(function (result) {
                     $scope.readtins = result.data;
 
-                    console.log(result.data);
+                    console.log($scope.readtins);
                 })
+               
             }
         })
         .state('about.step4', {
             url: '/step4',
             templateUrl: 'step4.html'
         })
+      
 });
 routerApp.controller('scotController', function ($scope) {
     $scope.scotches = [

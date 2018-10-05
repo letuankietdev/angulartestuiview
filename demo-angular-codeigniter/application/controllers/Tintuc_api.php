@@ -25,9 +25,12 @@ class Tintuc_api extends REST_Controller{
         $this->response($r); 
     }
     public function readtintuc_get(){
-
+        $id = $_GET['id'];
+        // $id = $this->post('id');
+        
+        
         $r = $this->Tintuc_model->readnow($id);
         $this->response($r);
     }
-   
+    
 }
