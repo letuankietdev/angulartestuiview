@@ -40,10 +40,10 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                 })
                 .then(function (result){
                      if(result.data != null){
-
+                            
                      }
                      else{
-                         
+
                      }
                 })
             }
@@ -51,7 +51,7 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('about', {
             url: '/about',
             templateUrl: 'partial-about.html',
-        
+            
             controller: function ($scope) {
                 $scope.id =0;
                 $scope.stepNumber = 0;
@@ -229,27 +229,56 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('about.readtintuc', {
             url: '/readtintuc/:id',
             templateUrl: 'readtintuc.html',
-            controller: function ($scope,$http,$stateParams){
-                // contactId
-                // $stateParams.id
-                // console.log("adasdas",$stateParams.id);
-                $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/readtintuc",{
-                    params :{id:$stateParams.id}
-                })
-                .then(function (result) {
-                    $scope.readtins = result.data;
+       //c2 : su dung resolve view   
+            resolve: {
+                readtintucs : ['$http','$stateParams', function($http,$stateParams){
+                    return $http.get('http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/readtintuc/' , {params :{id:$stateParams.id}})
+                        .then(function(result) 
+                        {
+                            console.log(result.data);
+                            return result.data;
+                        })
 
-                    console.log($scope.readtins);
-                })
+                }]
+            },
+            controller : function ($scope, readtintucs, $sce){
+                $scope.readtins = readtintucs;
+
+                $scope.trustedHtml = function (html){
+                    return $sce.trustAsHtml(html);
+                };
                
+                console.log("data"+$scope.readtins);
             }
+        //c1: truyen truc tiep ham trong controller
+            // controller: function ($scope,$http,$stateParams){
+            //     // contactId
+            //     // $stateParams.id
+            //     // console.log("adasdas",$stateParams.id);
+            //     $http.get("http://localhost/demo-angular-codeigniter/index.php/Tintuc_api/readtintuc",{
+            //         params :{id:$stateParams.id}
+            //     })
+            //     .then(function (result) {
+            //         $scope.readtins = result.data;
+
+            //         console.log($scope.readtins);
+            //     })
+               
+            // }
+           
+           
+
+               
         })
         .state('about.step4', {
             url: '/step4',
             templateUrl: 'step4.html'
         })
+
+        
       
-});
+})
+.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
 routerApp.controller('scotController', function ($scope) {
     $scope.scotches = [
         {

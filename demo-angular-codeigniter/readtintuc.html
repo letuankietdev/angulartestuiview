@@ -6,7 +6,7 @@
                 <h1>{{readtin.TieuDe}}</h1>
                  <p id="tomtat"><span class="text-info">{{readtin.TomTat}}</span></p> 
                  <img class="col-md-8" id="img" src="./public/tintuc/{{readtin.Hinh}}">
-                 <p>{{readtin.NoiDung}}</p>     
+                 <div ng-bind-html="readtin.NoiDung | unsafe"></div>   
                   <div class="row">
                       <label class="col-md-7"></label>
                       <label class="col-md-2">Lượt xem:{{readtin.SoLuotXem}}</label>

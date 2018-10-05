@@ -80,7 +80,7 @@
                             <img class="col-md-2" id="img" src="./public/tintuc/{{tintuchot.Hinh}}">
                             <div class="col-md-6 ">
                                 <label id="titlett"><span>&#x2614</span> {{tintuchot.TieuDe}}</label>
-                                <p>{{tintuchot.TomTat}}</p>
+                                <p >{{tintuchot.TomTat}}</p>
                                 <a ui-sref="about.readtintuc({id: '{{tintuchot.id}}'})" class="btn btn-danger">Read now
                                     !</a>
                             </div>
@@ -190,14 +190,16 @@
         #imgttn:hover {
             -webkit-transform: scale(1.3);
             transform: scale(1.3);
+            transition: 0.5s;
         }
 
         #news {
-            border-style: ridge;
+            border-style: double;
 
             border-color: #AAAAAA;
             border-radius: 0.5em;
             margin: 10px;
+            transition:  0.7s;
         }
 
         #news:hover {
